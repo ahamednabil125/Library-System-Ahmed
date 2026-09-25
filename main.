@@ -1,0 +1,35 @@
+
+import models
+import operations
+import storage
+import validators
+
+
+
+books = storage.load_books()
+
+
+
+print("Valid ID:", validators.is_valid_id("101"))
+print("Valid title:", validators.is_valid_title(""))
+print("Valid number:", validators.is_number("abc"))
+
+
+
+book1 = models.Book(101, "Learn Python", "Guido", True)
+book2 = models.Book(102, "Al-Ayyam", "Taha Hussein", True)
+
+print(operations.add_book(books, book1))
+print(operations.add_book(books, book2))
+
+
+operations.show_all_books(books)
+print(operations.borrow_book(books, 101))
+
+print(operations.borrow_book(books, 101))
+
+print("Available books:", operations.count_available(books))
+
+print(operations.return_book(books, 101)) 
+
+storage.save_books(books)
